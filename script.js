@@ -1,12 +1,12 @@
 // Importation de la Composition API de Vue.js
-const { createApp, ref, computed } = Vue;
+const { createApp, ref, computed, onMounted } = Vue;
 
 createApp({
   // La fonction setup est utilisée pour définir l'état réactif et les fonctions
   setup() {
     // Message d'accueil affiché au chargement de l'application
     const message = "Bienvenue dans PokeCount!";
-    
+
     // Utilisation de 'ref' pour créer des données réactives (état local de l'application)
     const compteur = ref(0); // Initialisation du compteur à 0
     const ilFautSauvegader = ref(false); // Indicateur si une sauvegarde est nécessaire
@@ -31,6 +31,8 @@ createApp({
       }
       // Ajoute le nombre capturé au tableau des captures
       capturesTab.value.push(compteur.value);
+      // Sauvegarde les captures dans le localStorage
+      localStorage.setItem('captures', JSON.stringify(capturesTab.value)); // Sauvegarde dans le localStorage
       // Réinitialise le compteur après sauvegarde
       compteur.value = 0;
       // Réinitialise l'indicateur de sauvegarde
@@ -43,6 +45,15 @@ createApp({
       // Utilisation de reduce pour additionner toutes les valeurs du tableau des captures
       return capturesTab.value.reduce((total, nombre) => total + nombre, 0);
     });
+
+    // Récupérer les données du localStorage lors du montage du composant
+    onMounted(() => {
+      const savedCaptures = JSON.parse(localStorage.getItem('captures'));
+      if (savedCaptures) {
+        capturesTab.value = savedCaptures;
+      }
+    });
+
 
     // Retourne les variables et fonctions pour qu'elles soient accessibles dans le template HTML
     return {

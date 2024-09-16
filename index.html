@@ -2,48 +2,80 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <!-- Encodage des caractères utilisé pour la page en UTF-8 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Le viewport permet d'adapter le contenu aux différentes tailles d'écrans, particulièrement pour le responsive -->
   <title>PokeCount - Capture de Pokémon</title>
+  <!-- Titre de la page affiché dans l'onglet du navigateur -->
   <link rel="stylesheet" href="style.css">
+  <!-- Inclusion du fichier CSS externe pour styliser la page -->
 </head>
 <body>
+<!-- Conteneur principal de l'application Vue.js, c'est ici que Vue va gérer le DOM -->
 <div id="poke-app">
+
+  <!-- Affichage dynamique du message (via interpolation) qui provient de l'état réactif dans Vue.js -->
   <h1>{{ message }}</h1>
 
+  <a href="https://www.pokemon.com/fr/pokedex">Ouvrir le Pokédex</a>
+
+  <!-- Section pour la capture des Pokémon avec un champ de saisie -->
   <div class="captures">
+    <!-- Étiquette (label) associée à l'input, utile pour l'accessibilité -->
     <label for="compteur">Pokémons capturés</label>
+    <!-- Champ de saisie lié à la variable 'compteur' avec 'v-model.number' pour convertir l'entrée en nombre -->
     <input id="compteur" v-model.number="compteur" size="2" />
+    <!-- 'v-model.number' permet une liaison bidirectionnelle avec la conversion en nombre -->
   </div>
 
+  <!-- Bouton pour capturer des Pokémon -->
+  <!-- '@click' déclenche la fonction 'capturer' au clic -->
+  <!-- ':class="{ chaud: ilFautSauvegader }' applique dynamiquement la classe 'chaud' si 'ilFautSauvegader' est vrai -->
   <button @click="capturer" :class="{ chaud: ilFautSauvegader }">
     Capturer 🐢
+    <!-- Message d'alerte affiché si 'ilFautSauvegader' est vrai (via v-show), sans retirer l'élément du DOM -->
     <div class="note" v-show="ilFautSauvegader">Faut sauvegarder !</div>
   </button>
 
+  <!-- Bouton pour sauvegarder les captures -->
+  <!-- '@click' appelle la fonction 'sauver' lorsqu'on clique sur le bouton -->
+  <!-- ':disabled' désactive le bouton si 'compteur' est inférieur à 1 -->
   <button @click="sauver" :disabled="compteur < 1">
     Sauver 💾
   </button>
 
+  <!-- Liste des captures affichée seulement si 'capturesTab' contient des éléments (grâce à v-if) -->
+  <!-- Utilisation de 'v-for' pour afficher chaque capture, avec 'index' comme clé unique pour chaque élément -->
   <ul id="captures" v-if="capturesTab.length">
     <li v-for="(nombre, index) in capturesTab" :key="index" @dblclick="capturesTab.splice(index, 1)">
+      <!-- Affichage du nombre de captures pour chaque Pokémon -->
       {{ nombre }}
     </li>
   </ul>
 
+  <!-- Message affiché si le tableau 'capturesTab' est vide, grâce à 'v-else' -->
   <p v-else>N'oublie pas de sauvegarder tes captures</p>
 
+  <!-- Affichage dynamique du total des Pokémon sauvegardés (propriété calculée 'totalPokemons') -->
   <p class="total">Pokémons sauvegardés {{ totalPokemons }}</p>
 
+  <!-- Message spécial affiché si le nombre total de Pokémon capturés dépasse 9 (via 'v-if') -->
   <p class="chasseur" v-if="totalPokemons > 9">
     🏆 T'es un vrai chasseur ! 🏆
   </p>
 
+  <!-- Bouton pour supprimer toutes les captures -->
+  <!-- '@click' réinitialise le tableau 'capturesTab' à vide -->
+  <!-- Le bouton est désactivé (grâce à ':disabled') si le tableau 'capturesTab' est vide -->
   <button @click="capturesTab = []" :disabled="capturesTab.length < 1">
     Supprimer les captures 🗑️
   </button>
 </div>
 
+<!-- Inclusion de Vue.js depuis un CDN (Content Delivery Network) -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<!-- Inclusion du fichier JavaScript contenant la logique de l'application Vue.js -->
 <script src="script.js"></script>
 </body>
 </html>
