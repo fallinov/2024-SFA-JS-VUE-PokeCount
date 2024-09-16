@@ -32,11 +32,21 @@ body {
   text-align: center;
 }
 
+a {
+  color: #3498db; /* Bleu pour les liens */
+  text-decoration: none; /* Suppression du soulignement */
+}
+
+a:hover {
+  text-decoration: underline; /* Soulignement au hover */
+}
+
 /* ***************************
    BUTTON STYLES
    Styles généraux pour tous les boutons
 *************************** */
-button {
+button,
+.button {
   display: inline-block;
   font-weight: bold;
   font-size: inherit;
@@ -59,6 +69,14 @@ button:hover {
 
 button:active {
   transform: scale(0.95); /* Réduction légère lors du clic */
+}
+
+a.button {
+  background-color: #3498db;
+}
+
+a.button:hover {
+  background-color: #2980b9;
 }
 
 /* ***************************
@@ -90,7 +108,7 @@ button[disabled] {
 #captures li {
   cursor: crosshair; /* Curseur personnalisé */
   display: inline-block;
-  padding: 0.5em 1em;
+  padding: 0.75em 1.5em;
   margin: 6px;
   background: #f1c40f; /* Jaune pour les éléments de la liste */
   font-weight: bold;

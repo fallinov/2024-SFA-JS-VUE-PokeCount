@@ -39,11 +39,13 @@ createApp({
 
     // Fonction pour confirmer avant d'ouvrir le Pokédex
     function verifierAvantDeQuitter(event) {
+      // Variable pour stocker la confirmation de l'utilisateur (true ou false)
+      let confirmation = false;
       // Afficher une boîte de dialogue confirm
-      const confirmation = confirm("Avez-vous bien sauvegardé vos captures avant d'ouvrir le Pokédex ?");
+      confirmation = confirm("Avez-vous bien sauvegardé vos captures avant d'ouvrir le Pokédex ?");
       if (confirmation) {
         // Si l'utilisateur confirme, on continue vers le lien
-        window.location.href = event.target.href;
+        window.location.href = event.target.href; // event.target.href contient le lien de l'élément cliqué
       }
     }
 

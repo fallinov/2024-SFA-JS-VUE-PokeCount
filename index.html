@@ -18,7 +18,7 @@
   <h1>{{ message }}</h1>
 
   <!-- Lien vers le Pokédex avec confirmation avant la navigation -->
-  <a href="https://www.pokemon.com/fr/pokedex" @click.prevent="verifierAvantDeQuitter">
+  <a class="button" href="https://www.pokemon.com/fr/pokedex" @click.prevent.self="verifierAvantDeQuitter">
     Ouvrir le Pokédex
   </a>
 
