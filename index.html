@@ -17,7 +17,10 @@
   <!-- Affichage dynamique du message (via interpolation) qui provient de l'état réactif dans Vue.js -->
   <h1>{{ message }}</h1>
 
-  <a href="https://www.pokemon.com/fr/pokedex">Ouvrir le Pokédex</a>
+  <!-- Lien vers le Pokédex avec confirmation avant la navigation -->
+  <a href="https://www.pokemon.com/fr/pokedex" @click.prevent="verifierAvantDeQuitter">
+    Ouvrir le Pokédex
+  </a>
 
   <!-- Section pour la capture des Pokémon avec un champ de saisie -->
   <div class="captures">

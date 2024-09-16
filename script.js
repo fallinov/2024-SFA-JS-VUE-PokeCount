@@ -39,6 +39,16 @@ createApp({
       ilFautSauvegader.value = false;
     }
 
+    // Fonction pour confirmer avant d'ouvrir le Pokédex
+    function verifierAvantDeQuitter(event) {
+      // Afficher une boîte de dialogue confirm
+      const confirmation = confirm("Avez-vous bien sauvegardé vos captures avant d'ouvrir le Pokédex ?");
+      if (confirmation) {
+        // Si l'utilisateur confirme, on continue vers le lien
+        window.location.href = event.target.href;
+      }
+    }
+
     // Propriété calculée qui calcule le total des Pokémons capturés
     // Elle est recalculée automatiquement quand 'capturesTab' est modifié
     const totalPokemons = computed(() => {
@@ -63,6 +73,7 @@ createApp({
       capturesTab, // Tableau des captures
       capturer, // Fonction de capture
       sauver, // Fonction de sauvegarde
+      verifierAvantDeQuitter, // Fonction de confirmation avant de quitter
       totalPokemons // Propriété calculée du total des Pokémons capturés
     };
   }
