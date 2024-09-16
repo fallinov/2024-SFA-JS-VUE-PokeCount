@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PokeCount - Capture de Pokémon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="poke-app">
+  <h1>{{ message }}</h1>
+
+  <div class="captures">
+    <label for="compteur">Pokémons capturés</label>
+    <input id="compteur" v-model.number="compteur" size="2" />
+  </div>
+
+  <button @click="capturer" :class="{ chaud: ilFautSauvegader }">
+    Capturer 🐢
+    <div class="note" v-show="ilFautSauvegader">Faut sauvegarder !</div>
+  </button>
+
+  <button @click="sauver" :disabled="compteur < 1">
+    Sauver 💾
+  </button>
+
+  <ul id="captures" v-if="capturesTab.length">
+    <li v-for="(nombre, index) in capturesTab" :key="index" @dblclick="capturesTab.splice(index, 1)">
+      {{ nombre }}
+    </li>
+  </ul>
+
+  <p v-else>N'oublie pas de sauvegarder tes captures</p>
+
+  <p class="total">Pokémons sauvegardés {{ totalPokemons }}</p>
+
+  <p class="chasseur" v-if="totalPokemons > 9">
+    🏆 T'es un vrai chasseur ! 🏆
+  </p>
+
+  <button @click="capturesTab = []" :disabled="capturesTab.length < 1">
+    Supprimer les captures 🗑️
+  </button>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

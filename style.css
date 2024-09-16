@@ -1,0 +1,151 @@
+/* ***************************
+   RESET CSS
+   On utilise le "box-sizing" pour inclure padding et border dans la taille des éléments
+*************************** */
+* {
+  box-sizing: border-box;
+}
+
+/* ***************************
+   BODY STYLES
+   Styles globaux pour la mise en page du body
+*************************** */
+body {
+  font-family: "Helvetica", sans-serif;
+  font-size: 1rem;
+  line-height: 1.3;
+  background: #2c3e50; /* Couleur de fond sombre */
+  padding: 0;
+  margin: 0;
+}
+
+/* ***************************
+   POKE-APP CONTAINER
+   Conteneur principal de l'application Vue.js
+*************************** */
+#poke-app {
+  background: #ecf0f1; /* Fond clair pour contraste avec le body */
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%; /* Flexibilité pour petits écrans */
+  margin: 1rem auto; /* Centré horizontalement */
+  text-align: center;
+}
+
+/* ***************************
+   BUTTON STYLES
+   Styles généraux pour tous les boutons
+*************************** */
+button {
+  display: inline-block;
+  font-weight: bold;
+  font-size: inherit;
+  font-family: inherit;
+  color: white;
+  background: #2ecc71; /* Couleur par défaut du bouton */
+  padding: 0.75em 1.25em;
+  margin: 0.5em;
+  border: none;
+  border-radius: 2em; /* Bord arrondi pour effet moderne */
+  cursor: pointer;
+  transition: all 0.125s; /* Transition douce pour hover et active */
+}
+
+/* Hover et active pour donner du retour visuel à l'utilisateur */
+button:hover {
+  background: #27ae60; /* Couleur légèrement plus foncée au hover */
+  transform: scale(1.05); /* Zoom léger réduit */
+}
+
+button:active {
+  transform: scale(0.95); /* Réduction légère lors du clic */
+}
+
+/* Boutons désactivés */
+button[disabled] {
+  color: #ecf0f1;
+  background: #7f8c8d; /* Gris pour boutons désactivés */
+  cursor: not-allowed; /* Indication visuelle de non-cliquable */
+}
+
+/* ***************************
+   BUTTON SPECIAL CLASSES
+   Ajout de classes spécifiques pour des cas particuliers
+*************************** */
+button.chaud,
+button.chaud:hover {
+  background: #e74c3c; /* Rouge pour alerter l'utilisateur */
+}
+
+/* ***************************
+   CAPTURE LIST
+   Liste des captures de Pokémon
+*************************** */
+#captures {
+  list-style: none; /* Suppression des puces de liste */
+  padding: 0;
+  margin: 1em 0;
+}
+
+#captures li {
+  cursor: crosshair; /* Curseur personnalisé */
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 4px;
+  background: #f1c40f; /* Jaune pour les éléments de la liste */
+  font-weight: bold;
+  transition: all 0.2s; /* Transition douce pour hover */
+}
+
+#captures li:hover {
+  background: #f39c12; /* Plus foncé au hover */
+  transform: scale(1.1); /* Zoom léger au hover */
+}
+
+/* ***************************
+   INPUT & LABEL STYLES
+   Champs de saisie pour le nombre de captures
+*************************** */
+input {
+  max-width: 100%;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  padding: 0.5em;
+  border: 2px solid #525874; /* Bord gris foncé pour les champs de saisie */
+}
+
+label {
+  display: inline-block;
+    margin: 1em 0.5em;
+    font-weight: bold;
+}
+
+/* ***************************
+   STYLES SPÉCIFIQUES
+*************************** */
+
+/* Style pour l'indicateur "il faut sauvegarder" */
+.note {
+  font-weight: normal;
+  margin-top: 0.2em;
+  font-size: 0.75em;
+}
+
+/* Texte de capture en gras et plus grand */
+.captures {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 1em;
+}
+
+/* Texte de total des Pokémons */
+.total {
+  font-weight: bold;
+}
+
+/* Style spécial pour la mention de chasseur de Pokémon */
+.chasseur {
+  background: #f1c40f;
+  padding: 0.5em;
+}
