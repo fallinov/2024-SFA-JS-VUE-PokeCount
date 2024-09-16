@@ -32,11 +32,21 @@ body {
   text-align: center;
 }
 
+a {
+  color: #3498db; /* Bleu pour les liens */
+  text-decoration: none; /* Suppression du soulignement */
+}
+
+a:hover {
+  text-decoration: underline; /* Soulignement au hover */
+}
+
 /* ***************************
    BUTTON STYLES
    Styles généraux pour tous les boutons
 *************************** */
-button {
+button,
+.button {
   display: inline-block;
   font-weight: bold;
   font-size: inherit;
@@ -61,11 +71,12 @@ button:active {
   transform: scale(0.95); /* Réduction légère lors du clic */
 }
 
-/* Boutons désactivés */
-button[disabled] {
-  color: #ecf0f1;
-  background: #7f8c8d; /* Gris pour boutons désactivés */
-  cursor: not-allowed; /* Indication visuelle de non-cliquable */
+a.button {
+  background-color: #3498db;
+}
+
+a.button:hover {
+  background-color: #2980b9;
 }
 
 /* ***************************
@@ -75,6 +86,13 @@ button[disabled] {
 button.chaud,
 button.chaud:hover {
   background: #e74c3c; /* Rouge pour alerter l'utilisateur */
+}
+
+/* Boutons désactivés */
+button[disabled] {
+  color: #ecf0f1;
+  background: #7f8c8d; /* Gris pour boutons désactivés */
+  cursor: not-allowed; /* Indication visuelle de non-cliquable */
 }
 
 /* ***************************
@@ -90,8 +108,8 @@ button.chaud:hover {
 #captures li {
   cursor: crosshair; /* Curseur personnalisé */
   display: inline-block;
-  padding: 0.5em 1em;
-  margin: 4px;
+  padding: 0.75em 1.5em;
+  margin: 6px;
   background: #f1c40f; /* Jaune pour les éléments de la liste */
   font-weight: bold;
   transition: all 0.2s; /* Transition douce pour hover */
