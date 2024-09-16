@@ -61,13 +61,6 @@ button:active {
   transform: scale(0.95); /* Réduction légère lors du clic */
 }
 
-/* Boutons désactivés */
-button[disabled] {
-  color: #ecf0f1;
-  background: #7f8c8d; /* Gris pour boutons désactivés */
-  cursor: not-allowed; /* Indication visuelle de non-cliquable */
-}
-
 /* ***************************
    BUTTON SPECIAL CLASSES
    Ajout de classes spécifiques pour des cas particuliers
@@ -75,6 +68,13 @@ button[disabled] {
 button.chaud,
 button.chaud:hover {
   background: #e74c3c; /* Rouge pour alerter l'utilisateur */
+}
+
+/* Boutons désactivés */
+button[disabled] {
+  color: #ecf0f1;
+  background: #7f8c8d; /* Gris pour boutons désactivés */
+  cursor: not-allowed; /* Indication visuelle de non-cliquable */
 }
 
 /* ***************************
@@ -91,7 +91,7 @@ button.chaud:hover {
   cursor: crosshair; /* Curseur personnalisé */
   display: inline-block;
   padding: 0.5em 1em;
-  margin: 4px;
+  margin: 6px;
   background: #f1c40f; /* Jaune pour les éléments de la liste */
   font-weight: bold;
   transition: all 0.2s; /* Transition douce pour hover */

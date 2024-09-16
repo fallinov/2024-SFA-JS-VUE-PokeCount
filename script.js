@@ -1,5 +1,5 @@
 // Importation de la Composition API de Vue.js
-const { createApp, ref, computed, onMounted } = Vue;
+const { createApp, ref, computed, onMounted, watch } = Vue;
 
 createApp({
   // La fonction setup est utilisée pour définir l'état réactif et les fonctions
@@ -14,17 +14,17 @@ createApp({
 
     // Fonction qui gère la capture d'un Pokémon
     function capturer() {
-      compteur.value += 1; // Incrémentation du compteur à chaque capture
-      // Si le compteur dépasse 5, un message indique qu'il faut sauvegarder
-      if (compteur.value > 5) {
-        ilFautSauvegader.value = true; // Active l'indicateur de sauvegarde
+      // Si le compteur n'est pas un nombre valide, le réinitialiser à 0
+      if(isNaN(compteur.value)) {
+        compteur.value = 0;
       }
+      compteur.value += 1; // Incrémentation du compteur à chaque capture
     }
 
     // Fonction pour sauvegarder les captures dans le tableau
     function sauver() {
       // Validation pour vérifier que le compteur est un nombre valide et supérieur à 0
-      if (!compteur.value || isNaN(compteur.value) || compteur.value < 1) {
+      if (isNaN(compteur.value) || compteur.value < 1) {
         alert("Veuillez entrer un nombre valide !"); // Message d'erreur si la validation échoue
         compteur.value = 0; // Réinitialise le compteur
         return; // Stoppe la fonction en cas d'erreur
@@ -35,8 +35,6 @@ createApp({
       localStorage.setItem('captures', JSON.stringify(capturesTab.value)); // Sauvegarde dans le localStorage
       // Réinitialise le compteur après sauvegarde
       compteur.value = 0;
-      // Réinitialise l'indicateur de sauvegarde
-      ilFautSauvegader.value = false;
     }
 
     // Fonction pour confirmer avant d'ouvrir le Pokédex
@@ -64,6 +62,15 @@ createApp({
       }
     });
 
+    // Utilisation de 'watch' pour observer les changements du compteur
+    watch(compteur, async (newVal, oldVal) => {
+        // Vérifie si le compteur est supérieur à 0
+        if (!isNaN(newVal) && newVal > 5) {
+            ilFautSauvegader.value = true; // Active l'indicateur de sauvegarde
+        } else {
+            ilFautSauvegader.value = false; // Désactive l'indicateur de sauvegarde
+        }
+    })
 
     // Retourne les variables et fonctions pour qu'elles soient accessibles dans le template HTML
     return {
