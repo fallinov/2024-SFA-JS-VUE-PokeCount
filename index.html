@@ -27,7 +27,7 @@
     <!-- Étiquette (label) associée à l'input, utile pour l'accessibilité -->
     <label for="compteur">Pokémons capturés</label>
     <!-- Champ de saisie lié à la variable 'compteur' avec 'v-model.number' pour convertir l'entrée en nombre -->
-    <input id="compteur" v-model.number="compteur" size="2" />
+    <input id="compteur" v-model.number="compteur" size="2" @keyup.enter="sauver"/>
     <!-- 'v-model.number' permet une liaison bidirectionnelle avec la conversion en nombre -->
   </div>
 
