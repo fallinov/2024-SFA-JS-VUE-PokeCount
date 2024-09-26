@@ -1,7 +1,7 @@
 // Importation de la Composition API de Vue.js
 const { createApp, ref, computed, onMounted, watch } = Vue;
 
-createApp({
+const app = createApp({
   // La fonction setup est utilisée pour définir l'état réactif et les fonctions
   setup() {
     // Message d'accueil affiché au chargement de l'application
